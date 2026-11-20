@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorIT AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* #region GENERAL LESSONS STYLES */
+
+/* main */
+
+:root{
+    --black:#000000;
+    --white:#FFFFFF;
+    --dark:#2E2E39;
+    --orange:#F5A006;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:var(--white);
+    color:var(--black);
+    font-family:'Manrope',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    opacity:0; animation:riseIn .6s ease-out .1s forwards;
+}
+
+@keyframes riseIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--black);
+    margin:0;
+}
+
+a{
+    color:var(--black); text-decoration-color:var(--orange); text-underline-offset:3px;
+}
+
+.wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 24px 120px;
+}
+
+/* hero */
+
+header.hero{
+    padding:64px 24px 0px;
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+}
+
+.eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:14px; font-weight:600; color:var(--white);
+    background:var(--dark);
+    padding:6px 14px; border-radius:999px;
+    margin-bottom:22px;
+}
+
+.eyebrow b{ 
+    color:var(--orange); 
+}
+
+h1.title{
+    font-size:clamp(34px,6vw,52px);
+    font-weight:700; letter-spacing:-0.02em;
+    line-height:1.08;
+}
+
+h1.title .hl{ 
+    color:var(--orange); 
+}
+
+.hero-cards{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+    margin-top:36px;
+}
+
+.hero-card{
+    background:var(--white); border:1.5px solid var(--black); border-radius:16px;
+    padding:16px 10px; text-align:center;
+}
+
+.hero-card .n{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px;
+}
+
+.hero-card .d{
+    font-size:13px; color:var(--black); margin-top:4px;
+}
+
+/* sections */
+
+section{ 
+    padding-top:70px; scroll-margin-top:70px; 
+}
+
+.section-head{ 
+    margin-bottom:26px; 
+}
+
+.kicker{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px;
+    color:var(--black); margin-left: 10px; margin-bottom:8px; display:inline-block;
+    background:var(--orange); padding:3px 10px; border-radius:6px;
+}
+
+h2.h{ 
+    font-size:clamp(26px,4vw,34px); font-weight:700; letter-spacing:-0.01em; margin-top:0px;
+}
+
+.lede{ 
+    color:var(--black); margin-top:10px; font-size:16.5px;
+}
+
+.stage-num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:50%;
+    background:var(--black); color:var(--white);
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    margin-bottom:14px;
+}
+
+/* illustrations */
+
+.illustration {
+    width: 100%;
+    max-width: 380px;
+    max-height: 380px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.illustration-nosquare {
+    width: 100%;
+    max-width: 800px;
+    max-height: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* questions with drop-down images */
+
+.qa-container {
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.qa-card {
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.qa-card[open] {
+    margin-bottom: 36px;
+}
+
+.qa-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    font-weight: 600;
+}
+
+.qa-summary::-webkit-details-marker {
+    display: none;
+}
+
+.qa-number {
+    color: var(--white);
+    background: var(--dark);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.qa-text {
+    margin: 0;
+    flex-grow: 1;
+    font-size: 16px;
+    color: var(--black);
+    transition: color 0.2s ease;
+}
+
+.qa-card:hover .qa-text {
+    color: var(--orange);
+}
+
+.qa-arrow {
+    font-size: 11px;
+    color: var(--dark);
+    transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.qa-card:hover .qa-arrow {
+    color: var(--orange);
+}
+
+.qa-card[open] .qa-arrow {
+    transform: rotate(180deg);
+}
+
+.qa-content {
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1.5px dashed var(--black);
+    text-align: center;
+}
+
+.qa-img {
+    width: 100%;
+    max-width: 700px;
+    max-height: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* tip box */
+
+.tip-box{
+    margin-top:18px; background:var(--dark); color:var(--white);
+    border-radius:16px; padding:16px 18px;
+}
+
+.tip-box .label{ 
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:14px; color:var(--orange); 
+}
+
+.tip-text{ 
+    margin-top:8px; font-size:15px; 
+}
+
+button.tipbtn{
+    margin-top:12px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:13.5px;
+    background:var(--orange); color:var(--black); border:none; border-radius:999px;
+    padding:9px 16px; cursor:pointer;
+}
+
+button.tipbtn:hover{ 
+    filter:brightness(0.92); 
+}
+
+/* link button */
+
+.button-link{
+    display:inline-flex; align-items:center; gap:8px;
+    margin-top:20px;
+    background:var(--orange); color:var(--black); text-decoration:none;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px;
+    padding:13px 22px; border-radius:999px;
+}
+
+.button-link:hover{ 
+    filter:brightness(0.92); 
+}
+
+/* warning banner */
+
+.warning-banner {
+    background: #FFF0F0;
+    border: 2px solid #FF4D4D;
+    border-radius: 12px;
+    margin-top: 24px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--dark);
+}
+
+.warning-banner .warn-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.warning-banner p {
+    margin: 0;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+footer{
+    text-align:center; margin-top:70px; padding:30px 24px; border-radius:20px;
+    background:var(--dark); color:var(--white); font-size:14px;
+}
+
+footer b{ 
+    color:var(--orange); 
+}
+
+@media(max-width:600px){
+    .hero-cards{ grid-template-columns:1fr; }
+    .glossary{ grid-template-columns:1fr; }
+    .recap-grid{ grid-template-columns:1fr; }
+    nav{ display:none; }
+}
+
+/* GIF */
+
+.custom-gif-styled {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 16px auto;
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    object-fit: contain;
+    
+    box-shadow: 4px 4px 0px var(--black);
+    transition: transform 0.2s ease;
+}
+
+.custom-gif-styled:hover {
+    transform: translateY(-2px);
+}
+
+/* puzzle section */
+
+.puzzle-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.puzzle-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.puzzle-piece {
+    position: relative;
+    background: var(--white, #ffffff);
+    border: 2px solid var(--black, #000000);
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    min-height: 68px;
+    box-shadow: 0 4px 0 var(--black, #000000);
+}
+
+.puzzle-piece:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--black, #000000);
+}
+
+.term-piece {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 12px;
+}
+
+.term-piece::after {
+    content: '';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    background: inherit;
+    border: 2px solid var(--black, #000000);
+    border-radius: 50%;
+    z-index: 2;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.term-piece::before {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 20px;
+    background: inherit;
+    z-index: 3;
+    transition: background 0.2s;
+}
+
+.puzzle-piece.selected {
+    background: var(--orange, #FF9F43);
+    color: var(--black, #000000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--black, #000000);
+    border-color: var(--black, #000000);
+}
+
+.puzzle-piece.matched {
+    background: #EAF8E6;
+    border-color: #2E7D32;
+    box-shadow: 0 3px 0 #2E7D32;
+    color: #1B5E20;
+    cursor: default;
+    pointer-events: none;
+    transform: none;
+}
+
+.term-piece.matched::after,
+.definition-piece.matched::before {
+    border-color: #2E7D32;
+}
+
+.puzzle-piece.wrong {
+    animation: shake 0.4s ease-in-out;
+    border-color: #E53935;
+    background: #FFEBEE;
+}
+
+.term-piece.wrong::after,
+.definition-piece.wrong::before {
+    border-color: #E53935;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+@media (max-width: 600px) {
+    .puzzle-container {
+        grid-template-columns: 1fr;
+    }
+
+    .term-piece,
+    .definition-piece {
+        margin-right: 0;
+        margin-left: 0;
+        -webkit-mask: none;
+        mask: none;
+    }
+
+    .term-piece::after,
+    .term-piece::before,
+    .definition-piece::before {
+        display: none;
+    }
+}
+
+/* #endregion */
+
+/* #region CUSTOM LESSON STYLES */
+
+/* prompt box */
+
+.prompt-box {
+    margin-top: 18px;
+    background: var(--dark);
+    color: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 16px;
+    padding: 16px 18px 18px;
+    box-shadow: 4px 4px 0 var(--black);
+}
+
+.prompt-box .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--orange);
+}
+
+.prompt-box .prompt-text {
+    margin-top: 12px;
+    padding: 14px 16px;
+    background: var(--white);
+    color: var(--black);
+    border-left: 5px solid var(--orange);
+    border-radius: 10px;
+    font-size: 15px;
+    line-height: 1.65;
+    white-space: pre-line;
+}
+
+.prompt-box .copy-ok {
+    color: var(--white);
+}
+
+/* hotkeys / tools */
+
+.key {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    background: var(--white);
+    color: var(--black);
+    border: 1.5px solid var(--black);
+    border-radius: 6px;
+    padding: 0 8px;
+    margin: 0 2px;
+    box-shadow: 0 2px 0 var(--black);
+}
+
+/* numbered steps (for practrice part) */
+
+.step-list {
+    list-style: none;
+    counter-reset: st;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.step-list li {
+    counter-increment: st;
+    position: relative;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    padding: 14px 18px 14px 62px;
+    box-shadow: 0 4px 0 var(--black);
+    font-size: 15.5px;
+}
+
+.step-list li::before {
+    content: counter(st);
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--black);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-list li b {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+@media (max-width: 600px) {
+    .two-col,
+    .transp-demo {
+        grid-template-columns: 1fr;
+    }
+
+    .steps-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .strip-arrow {
+        justify-content: center;
+        transform: rotate(90deg);
+    }
+}
+
+/* sub heading */
+.sub-h {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin: 36px 0 6px;
+}
+
+/* grids and cards */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.glossary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.term-card {
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 0 var(--black);
+    font-size: 14.5px;
+}
+
+.term-card b {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+/* color swatches */
+.swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.swatch {
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 0 var(--black);
+    background: var(--white);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.swatch .color { height: 60px; }
+.swatch .name { padding: 8px 6px 10px; }
+.swatch .name b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 14px; }
+
+/* 60-30-10 bar */
+.ratio-bar {
+    display: flex;
+    height: 52px;
+    margin-top: 14px;
+    border: 2px solid var(--black);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.ratio-bar div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* font samples */
+.font-sample {
+    font-size: 30px;
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+/* ad card scheme */
+.card-scheme {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 4 / 5;
+    margin: 20px auto 0;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--black);
+}
+
+.card-scheme div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.cs-photo { flex: 1; background: var(--orange); }
+.cs-title { height: 36px; background: var(--dark); color: var(--white); }
+.cs-text  { height: 30px; border: 1.5px dashed var(--black); }
+.cs-btn   { height: 28px; width: 55%; background: var(--black); color: var(--white); }
+
+@media (max-width: 600px) {
+    .two-col, .glossary { grid-template-columns: 1fr; }
+}
+
+/* #endregion */
+
+</style>
+</head>
+<body>
+
+<!-- #region HEADER-->
+<header class="hero">
+    <span class="eyebrow">✨ <b>Creator IT Academy</b> / 11-13 років / Урок 4</span>
+        <h1 class="title">ШІ як вчитель та помічник<br><span class="hl">дизайн одягу</span></h1>
+    <div class="hero-cards">
+        <div class="hero-card"><div class="n">🤓 Вчимо</div><div class="d">Впізнаваний дизайн та створення одягу</div></div>
+        <div class="hero-card"><div class="n">🧵 Дизайнимо</div><div class="d">Генеруємо одяг за власною ідеєю</div></div>
+        <div class="hero-card"><div class="n">📦 Оформляємо</div><div class="d">Оформляємо рекламну картку одягу</div></div>
+    </div>
+</header>
+<!-- #endregion -->
+
+<div class="wrap">
+
+    <!-- #region Review -->
+    <section id="review">
+        <div class="section-head">
+            <div class="stage-num">1</div>
+            <span class="kicker">Пригадуємо</span>
+            <h2 class="h">Склади пазл 🧩</h2>
+            <p class="lede">
+                З'єднай терміни з їхніми поясненнями.
+            </p>
+        </div>
+
+        <div class="puzzle-container">
+            <div class="puzzle-column" id="terms-column">
+            <div class="puzzle-piece term-piece" data-match="1">
+                <span class="puzzle-label">Скетч</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="2">
+                <span class="puzzle-label">Растрова графіка</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="3">
+                <span class="puzzle-label">Векторна графіка</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="4">
+                <span class="puzzle-label">Кадр (Frame)</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="5">
+                <span class="puzzle-label">Групування</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="6">
+                <span class="puzzle-label">Експорт</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            <div class="puzzle-piece term-piece" data-match="7">
+                <span class="puzzle-label">Прозорість (Opacity)</span>
+                <div class="puzzle-tab tab-right"></div>
+            </div>
+            </div>
+
+            <div class="puzzle-column" id="defs-column">
+            <div class="puzzle-piece def-piece" data-match="4">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">«Аркуш» у Figma, на якому малюють і який можна зберегти як картинку</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="7">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Налаштування шару, щоб бачити картинку напівпрозорою і зручно обвести</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="1">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Швидкий простий начерк, де головне — форма та основні деталі</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="6">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Збереження роботи чи кадру у вигляді готового файлу, наприклад PNG</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="2">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Зображення з пікселів, яке при сильному наближенні показує «квадратики»</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="5">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Об'єднання кількох окремих фігур в один спільний об'єкт</span>
+            </div>
+            <div class="puzzle-piece def-piece" data-match="3">
+                <div class="puzzle-tab tab-left"></div>
+                <span class="puzzle-label">Лінії та форми, які можна збільшувати скільки завгодно без втрати якості</span>
+            </div>
+            </div>
+        </div>
+
+        </section>
+    <!-- #endregion -->
+
+    <!-- #region Theory -->
+    <section id="theory">
+        <div class="section-head">
+            <div class="stage-num">2</div>
+            <span class="kicker">Читаємо</span>
+            <h2 class="h">Реклама яку запам'ятовують 🎯</h2>
+        </div>
+
+        <!-- ===== 1. КОЛЬОРИ ===== -->
+        <h3 class="sub-h">🎨 Секрет 1: колір розповідає історію</h3>
+        <p>Кожен колір викликає емоцію. Дизайнери обирають його ще до того, як намалюють перший ескіз.</p>
+
+        <div class="swatches">
+            <div class="swatch"><div class="color" style="background:#E53935"></div><div class="name"><b>Червоний</b>енергія, захоплення</div></div>
+            <div class="swatch"><div class="color" style="background:#1E5AD7"></div><div class="name"><b>Синій</b>спокій, довіра</div></div>
+            <div class="swatch"><div class="color" style="background:#FFD233"></div><div class="name"><b>Жовтий</b>радість, увага</div></div>
+            <div class="swatch"><div class="color" style="background:#2E9E5B"></div><div class="name"><b>Зелений</b>природа, свіжість</div></div>
+            <div class="swatch"><div class="color" style="background:#000000"></div><div class="name"><b>Чорний</b>стиль, елегантність</div></div>
+        </div>
+
+        <h3 class="sub-h">⚖️ Правило 60-30-10</h3>
+        <p>Не змішуй усі кольори докупи. Обери <b>три</b> і розподіли їх так:</p>
+        <div class="ratio-bar">
+            <div style="width:60%; background:var(--dark); color:var(--white);">60% основний</div>
+            <div style="width:30%; background:var(--orange); color:var(--black);">30% другий</div>
+            <div style="width:10%; background:var(--white); color:var(--black);">10%</div>
+        </div>
+        <p style="font-size:14.5px;">💡 Найяскравіший колір (10%) став на головне: назву або кнопку.</p>
+
+        <!-- ===== 2. ШРИФТИ ===== -->
+        <h3 class="sub-h">🔤 Секрет 2: шрифт має характер</h3>
+        <p>Шрифт теж «говорить»: одні звучать серйозно, інші весело.</p>
+
+        <div class="glossary">
+            <div class="term-card">
+                <div class="font-sample" style="font-family:Georgia,'Times New Roman',serif;">Класика</div>
+                <b>З засічками (Serif)</b>
+                Елегантно, дорого, як у журналах 📰
+            </div>
+            <div class="term-card">
+                <div class="font-sample" style="font-family:'Space Grotesk',sans-serif; font-weight:700;">Сучасність</div>
+                <b>Без засічок (Sans-serif)</b>
+                Чітко, просто, легко читати 📱
+            </div>
+            <div class="term-card">
+                <div class="font-sample" style="font-family:'Brush Script MT','Segoe Script',cursive;">Творчість</div>
+                <b>Рукописний</b>
+                Тепло й особисто, але лише для 1-2 слів ✍️
+            </div>
+            <div class="term-card">
+                <div class="font-sample" style="font-family:Impact,'Arial Black',sans-serif; letter-spacing:1px;">ГУЧНО!</div>
+                <b>Декоративний / жирний</b>
+                Привертає увагу, ідеальний для заголовків 📣
+            </div>
+        </div>
+
+        <div class="warning-banner">
+            <span class="warn-icon">🚫</span>
+            <p>Золоте правило: максимум 2 шрифти в одній картці. Один для назви, другий для опису!</p>
+        </div>
+
+        <!-- ===== 3. СЕКРЕТИ КОМПОЗИЦІЇ ===== -->
+        <h3 class="sub-h">🕵️ Секрети, що роблять рекламу професійною</h3>
+
+        <div class="qa-container">
+
+            <details class="qa-card">
+                <summary class="qa-summary">
+                    <span class="qa-number">1</span>
+                    <p class="qa-text">Що має бути найпомітнішим на картці? 👑</p>
+                    <span class="qa-arrow">▼</span>
+                </summary>
+                <div class="qa-content">
+                    <p><b>Ієрархія!</b> Око має знати, куди дивитись спершу: 1️⃣ фото, 2️⃣ назва, 3️⃣ опис. Чим важливіше, тим більше й жирніше.</p>
+                    <img class="qa-img" src="https://i.imgur.com/hJrmhIP.jpeg" alt="Ієрархія на рекламній картці">
+                </div>
+            </details>
+
+            <details class="qa-card">
+                <summary class="qa-summary">
+                    <span class="qa-number">2</span>
+                    <p class="qa-text">Навіщо залишати порожній простір? 🌬️</p>
+                    <span class="qa-arrow">▼</span>
+                </summary>
+                <div class="qa-content">
+                    <p><b>Повітря!</b> Коли все натиснуте впритул, очі втомлюються. Порожнє місце допомагає виділити головне, і картка виглядає дорожче 💎</p>
+                    <img class="qa-img" src="https://i.imgur.com/k1HJTbu.jpeg" alt="Порожній простір у дизайні">
+                </div>
+            </details>
+
+            <details class="qa-card">
+                <summary class="qa-summary">
+                    <span class="qa-number">3</span>
+                    <p class="qa-text">Як зробити, щоб усе виглядало рівно? 📏</p>
+                    <span class="qa-arrow">▼</span>
+                </summary>
+                <div class="qa-content">
+                    <p><b>Сітка та вирівнювання!</b> Уяви невидиму сітку з колонок. Усі елементи «чіпляються» до її ліній, тому картка виглядає охайно. Також тримай однакові відступи по краях 🧱</p>
+                    <img class="qa-img" src="https://i.imgur.com/4V0DJRO.jpeg" alt="Сітка та відступи">
+                </div>
+            </details>
+
+            <details class="qa-card">
+                <summary class="qa-summary">
+                    <span class="qa-number">4</span>
+                    <p class="qa-text">Чому текст на деяких картках важко читати? 😵</p>
+                    <span class="qa-arrow">▼</span>
+                </summary>
+                <div class="qa-content">
+                    <p><b>Контраст!</b> Темний текст має бути на світлому фоні, світлий на темному. Жовтий на білому або сірий на сірому зливаються, і їх ніхто не прочитає 👀</p>
+                    <img class="qa-img" src="https://i.imgur.com/FgTTVd6.jpeg" alt="Контраст тексту та фону">
+                </div>
+            </details>
+
+        </div>
+
+        <!-- ===== 4. ЗБИРАЄМО ДОКУПИ ===== -->
+        <h3 class="sub-h">🧩 Секрет 3: збираємо все докупи</h3>
+        <p>Ось з чого складається гарна рекламна картка. Обери для неї <b>один настрій</b>, і всі елементи мають під нього підлаштуватись:</p>
+
+        <div class="card-scheme">
+            <div class="cs-photo">📸 ФОТО (головне)</div>
+            <div class="cs-title">НАЗВА КОЛЕКЦІЇ</div>
+            <div class="cs-text">Опис у 2-3 речення</div>
+            <div class="cs-btn">NEW ✨</div>
+        </div>
+
+        <div class="tip-box">
+            <div class="label">🔎 Як стати впізнаваним?</div>
+            <div class="tip-text">
+                Згадай дуже відомі бренди: ті самі кольори, той самий шрифт, той самий настрій у кожній рекламі. <b>Повторюваність = впізнаваність.</b> 
+                Тому обирай один стиль й тримайся його!
+            </div>
+        </div>
+
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Prompt task -->
+    <section id="prompt-task">
+        <div class="section-head">
+            <div class="stage-num">3</div>
+            <span class="kicker">ШІ вчитель</span>
+            <h2 class="h">Просимо ШІ стати вчителем моди 👗</h2>
+            <p class="lede">
+                Щоб створити свій одяг, треба вивчити професію дизайнера. Попросимо Gemini розповісти все цікаво й зрозуміло. Але для цього потрібен правильний промт! 🧠
+            </p>
+        </div>
+
+        <h3 class="sub-h">🧱 З чого складається хороший промт</h3>
+        <p>Пам'ятаєш про <b>роль</b> та <b>уточнення</b>? Додамо ще дві частини:</p>
+
+        <div class="glossary">
+            <div class="term-card"><b>🎭 Роль</b>Хто такий ШІ? «Ти — дизайнер одягу, який розповідає школярам»</div>
+            <div class="term-card"><b>🎯 Завдання</b>Що саме розповісти? Професію, стилі, види одягу</div>
+            <div class="term-card"><b>🔍 Деталі</b>Мій вік, простими словами, з прикладами, до 300 слів</div>
+            <div class="term-card"><b>📋 Формат</b>Список, смайлики, наприкінці запитання мені</div>
+        </div>
+
+        <h3 class="sub-h">📝 Приклад промту</h3>
+        <div class="prompt-box">
+            <div class="label">🤖 Промт для Gemini</div>
+            <div class="prompt-text" id="p-teacher">Ти — дизайнер одягу, який цікаво розповідає школярам 11–13 років.
+        Розкажи мені про свою професію: чим займається дизайнер одягу, як проходить його робочий день і як ідея перетворюється на справжню річ.
+        Потім поясни основи дизайну одягу: які бувають сучасні стилі, які існують види одягу, з яких матеріалів їх шиють і які деталі можна вигадувати.
+        Пиши простими словами, з прикладами й смайликами, не більше 300 слів.
+        У кінці постав мені 3 запитання, які допоможуть вигадати власний одяг.</div>
+            <button class="tipbtn" data-copy="p-teacher">📋 Скопіювати промт</button>
+            <span class="copy-ok" data-copy-ok="p-teacher"></span>
+        </div>
+
+        <a class="button-link" href="https://gemini.google.com" target="_blank" rel="noopener">Відкрити Gemini ↗</a>
+
+        <h3 class="sub-h">🔁 Не зрозумів? Уточнюй!</h3>
+        <div class="glossary">
+            <div class="term-card">«Розкажи детальніше про матеріали для курток 🧥»</div>
+            <div class="term-card">«Поясни, що таке силует, на прикладі светра 🧶»</div>
+            <div class="term-card">«Які поєднання кольорів зараз у моді? 🎨»</div>
+            <div class="term-card">«Дай 5 ідей деталей для кросівок 👟»</div>
+        </div>
+
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Generation -->
+    <section id="generation">
+        <div class="section-head">
+            <div class="stage-num">4</div>
+            <span class="kicker">Генеруємо</span>
+            <h2 class="h">Створюємо свій одяг 👟</h2>
+            <p class="lede">
+                Час стати дизайнером! Обери одну річ, вигадай її вигляд і опиши так точно, щоб Gemini «побачив» її так само, як ти ✨
+            </p>
+        </div>
+
+        <h3 class="sub-h">1️⃣ Обери один вид одягу</h3>
+        <div class="glossary">
+            <div class="term-card"><b>🧥 Куртка</b>Безліч деталей: кишені, капюшон, застібки</div>
+            <div class="term-card"><b>🧶 Светр</b>Візерунки, фактура, цікаві рукави</div>
+            <div class="term-card"><b>👕 Футболка</b>Головне тут принт і крій</div>
+            <div class="term-card"><b>👟 Кросівки</b>Підошва, шнурівка, колір, форма</div>
+        </div>
+
+        <h3 class="sub-h">2️⃣ Вигадай вигляд</h3>
+        <p>Дай відповідь на питання (можна просто в голові):</p>
+        <ul>
+            <li>🏷️ Який <b>стиль</b>? (стрітвер, спортивний, мінімалізм…)</li>
+            <li>🎨 Які <b>3 кольори</b>?</li>
+            <li>🧵 З якого <b>матеріалу</b>?</li>
+            <li>📐 Який <b>силует</b>? (вільний, оверсайз чи приталений)</li>
+            <li>🔧 Які <b>деталі</b>? (кишені, капюшон, зав'язки…)</li>
+            <li>🌦️ Для якого <b>сезону</b> та настрою?</li>
+        </ul>
+
+        <img class="illustration-nosquare" src="https://i.imgur.com/39Q1QDy.jpeg" alt="Чекліст дизайнера">
+
+        <h3 class="sub-h">3️⃣ Складаємо промт</h3>
+        <p>Створи <b>три різні зображення</b> свого одягу. Замість слів у [дужках] встав свої:</p>
+
+        <!-- Промт А -->
+        <div class="prompt-box">
+            <div class="label">📸 Фото А: одяг на білому фоні</div>
+            <div class="prompt-text" id="p-flat">Згенеруй фото: [ВИД ОДЯГУ] у стилі [СТИЛЬ].
+        Колір: [КОЛІР 1], акценти [КОЛІР 2].
+        Матеріал: [МАТЕРІАЛ]. Силует: [ВІЛЬНИЙ / ПРИЛЕГЛИЙ].
+        Деталі: [КИШЕНІ, КАПЮШОН, ПРИНТ...].
+        Одяг красиво розкладений на чисто білому фоні, вигляд зверху, м'яке студійне світло, чітко видно шви й текстуру тканини, професійне каталожне фото.
+        Без написів і без логотипів.</div>
+            <button class="tipbtn" data-copy="p-flat">📋 Скопіювати</button>
+            <span class="copy-ok" data-copy-ok="p-flat"></span>
+        </div>
+
+        <!-- Промт Б -->
+        <div class="prompt-box">
+            <div class="label">📐 Фото Б: схема (ескіз)</div>
+            <div class="prompt-text" id="p-sketch">Тепер зроби технічну схему цього самого одягу (fashion flat sketch).
+        Тонкі чорні лінії на білому фоні, без заливки кольором.
+        Вигляд спереду й ззаду, добре видно шви, кишені та застібки.
+        Без написів.</div>
+            <button class="tipbtn" data-copy="p-sketch">📋 Скопіювати</button>
+            <span class="copy-ok" data-copy-ok="p-sketch"></span>
+        </div>
+
+        <!-- Промт В -->
+        <div class="prompt-box">
+            <div class="label">🧍 Фото В: на моделі</div>
+            <div class="prompt-text" id="p-model">Тепер створи фото стильної дорослої моделі, яка носить цей самий одяг.
+        Повний зріст, впевнена поза, однотонний світлий фон студії, природне м'яке світло.
+        Одяг має бути добре видно, фото як для модного журналу.
+        Без написів і логотипів.</div>
+            <button class="tipbtn" data-copy="p-model">📋 Скопіювати</button>
+            <span class="copy-ok" data-copy-ok="p-model"></span>
+        </div>
+
+        <div class="tip-box">
+            <div class="label">💡 Підказки</div>
+            <div class="tip-text">
+                🔗 Працюй <b>в одному чаті</b> й пиши «цей самий одяг», тоді Gemini запам'ятає дизайн.<br>
+                🔁 Не сподобалось? Напиши <b>уточнення</b>: «зроби капюшон більшим», «змін колір на темно-синій».<br>
+                🔤 ШІ любить помилятися в написах, тому в промті завжди пиши «без написів». Назву додамо у Figma!
+            </div>
+        </div>
+
+        <div class="warning-banner">
+            <span class="warn-icon">⚠️</span>
+            <p>Не завантажуй у Gemini реальні фото людей і не копіюй логотипи відомих брендів. Вигадуй своє!</p>
+        </div>
+
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Creating -->
+    <section id="creating">
+        <div class="section-head">
+            <div class="stage-num">5</div>
+            <span class="kicker">Творимо</span>
+            <h2 class="h">Рекламна картка у Figma 🃏</h2>
+            <p class="lede">
+                Збираємо все разом: фото від ШІ + секрети дизайну = картка колекції, яку захочеться «лайкнути» ❤️
+            </p>
+        </div>
+
+        <div class="tip-box">
+            <div class="label">🎯 Що маємо отримати</div>
+            <div class="tip-text">
+                Картка 1080×1350 px з <b>фото</b> одягу, <b>назвою</b> колекції та <b>описом</b> у 2-3 речення, зібрані на сітці, з 2 шрифтами та 3 кольорами.
+            </div>
+        </div>
+
+        <div class="card-scheme">
+            <div class="cs-photo">📸 ФОТО</div>
+            <div class="cs-title">НАЗВА</div>
+            <div class="cs-text">Опис</div>
+            <div class="cs-btn">NEW ✨</div>
+        </div>
+
+        <a class="button-link" href="https://www.figma.com/" target="_blank" rel="noopener">Відкрити Figma ↗</a>
+
+        <h3 class="sub-h">🛠️ Приклад кроків у Figma</h3>
+        <ol class="step-list">
+            <li>
+                <b>Створи файл 📄.</b> Відкрий Figma й натисни <b>Design file</b>).
+            </li>
+            <li>
+                <b>Зроби полотно (Frame) 🖼️.</b> Натисни <span class="key">F</span>, у правій панелі обери пресет або впиши розмір: <b>W = 1080, H = 1350</b>.
+            </li>
+            <li>
+                <b>Обери палітру 🎨.</b> Перейди на веб-сайт <a target="_blank" rel="noopener noreferrer" href="https://colorhunt.co/" >https://colorhunt.co/</a> та знайди палітру, яка тобі подобається.
+            </li>
+            <li>
+                <b>Додай фон 🖼️.</b> Виділи Frame, у блоці <b>Fill</b> натисни на колір і обери фон зі своєї палітри (60% картки). Колір можна ввести кодом, наприклад <code>#2E2E39</code>.
+            </li>
+            <li>
+                <b>Встав фото 📸.</b> Скопіюй фото з часту та встав у Figma.
+            </li>
+            <li>
+                <b>Підлаштуй розмір 📐.</b> Тягни за кут. Розташуй його у верхній частині картки, по лініях сітки та відступах.
+            </li>
+            <li>
+                <b>Заокругли кути ⭕.</b> Виділи фото й у правій панелі в полі <b>Corner radius</b> впиши, наприклад, <code>24</code>.
+            </li>
+            <li>
+                <b>Напиши назву 🔠.</b> Натисни <span class="key">T</span>, клікни на картці й введи назву колекції. У правій панелі обери <b>шрифт</b> (жирний, наприклад Montserrat, Inter чи Playfair Display) і <b>розмір 64-80</b>.
+            </li>
+            <li>
+                <b>Додай опис 📝.</b> Знову <span class="key">T</span>, встав опис. Шрифт інший або той самий, але легший, <b>розмір 22-26</b>. Для читабельності обери колір із високим контрастом до фону.
+            </li>
+            <li>
+                <b>Зроби акцент 🏷️.</b> Натисни <span class="key">R</span> і намалюй прямокутник, зроби йому <b>Corner radius</b> та яскравий колір (10%). Поверх додай <span class="key">T</span> і напис «NEW» чи «Колекція 2026».
+            </li>
+            <li>
+                <b>Вирівняй усе 🧲.</b> Виділи кілька елементів із затиснутим <span class="key">Shift</span> і натискай: <span class="key">Alt</span>+<span class="key">A</span> — ліворуч, <span class="key">Alt</span>+<span class="key">H</span> — по центру, <span class="key">Alt</span>+<span class="key">D</span> — праворуч. Щоб побачити відстані між об'єктами, затисни <span class="key">Alt</span> і наведи курсор на сусідній елемент.
+            </li>
+            <li>
+                <b>Перевір відступи ✅.</b> Тримай між блоками однакові проміжки: <b>16, 24, 32 px</b>.
+            </li>
+        </ol>
+
+        <h3 class="sub-h">🔍 Перевір себе</h3>
+        <div class="glossary">
+            <div class="term-card"><b>🎨 Кольори</b>Не більше 3, правило 60-30-10</div>
+            <div class="term-card"><b>🔤 Шрифти</b>Не більше 2, назву видно першою</div>
+            <div class="term-card"><b>📏 Сітка</b>Усе вирівняно, відступи однакові</div>
+            <div class="term-card"><b>👀 Контраст</b>Текст легко читається на фоні</div>
+        </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Kahoot -->
+    <section id="kahoot">
+    <div class="section-head">
+        <div class="stage-num">6</div>
+        <span class="kicker">Вікторина</span>
+        <h2 class="h">Граємо в Кахут ❓</h2>
+        <a class="button-link" href="https://kahoot.it/" target="_blank" rel="noopener">Відкрити Kahoot ↗</a>
+    </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region Footer -->
+    <footer>
+        <b>👋 Creator IT Academy</b> / 11-13 років / Урок 4
+    </footer>
+    <!-- #endregion -->
+</div>
+
+<script>
+
+// Theory puzzles functions
+document.addEventListener('DOMContentLoaded', () => {
+    let selectedTerm = null;
+    let selectedDef = null;
+
+    const termPieces = document.querySelectorAll('.term-piece');
+    const defPieces = document.querySelectorAll('.def-piece');
+
+    termPieces.forEach(piece => {
+        piece.addEventListener('click', () => {
+            if (piece.classList.contains('matched')) return;
+
+            termPieces.forEach(p => p.classList.remove('selected'));
+            piece.classList.add('selected');
+            selectedTerm = piece;
+
+            checkMatch();
+        });
+    });
+
+    defPieces.forEach(piece => {
+        piece.addEventListener('click', () => {
+            if (piece.classList.contains('matched')) return;
+
+            defPieces.forEach(p => p.classList.remove('selected'));
+            piece.classList.add('selected');
+            selectedDef = piece;
+
+            checkMatch();
+        });
+    });
+
+    function checkMatch() {
+        if (!selectedTerm || !selectedDef) return;
+
+        const termMatchId = selectedTerm.getAttribute('data-match');
+        const defMatchId = selectedDef.getAttribute('data-match');
+
+        if (termMatchId === defMatchId) {
+            selectedTerm.classList.remove('selected');
+            selectedDef.classList.remove('selected');
+
+            selectedTerm.classList.add('matched');
+            selectedDef.classList.add('matched');
+
+            selectedTerm = null;
+            selectedDef = null;
+        } else {
+            const t = selectedTerm;
+            const d = selectedDef;
+
+            t.classList.add('wrong');
+            d.classList.add('wrong');
+
+            setTimeout(() => {
+                t.classList.remove('wrong', 'selected');
+                d.classList.remove('wrong', 'selected');
+            }, 400);
+
+            selectedTerm = null;
+            selectedDef = null;
+        }
+    }
+});
+
+// Copy to clipboard helper
+function copyFrom(text, okEl) {
+    const done = () => {
+        if (!okEl) return;
+        okEl.textContent = '✔ Скопійовано!';
+        setTimeout(() => { okEl.textContent = ''; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+    } else {
+        fallbackCopy(text, done);
+    }
+}
+ 
+function fallbackCopy(text, done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+}
+ 
+// Copy buttons for ready-made prompts
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-copy');
+            const src = document.getElementById(id);
+            const ok = document.querySelector('[data-copy-ok="' + id + '"]');
+            if (src) copyFrom(src.innerText, ok);
+        });
+    });
+});
+
+</script>
+
+</body>
+</html>
